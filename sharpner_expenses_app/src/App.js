@@ -1,5 +1,7 @@
 
 import Expenses from "./component/Expenses";
+import Card from "./component/Card";
+
 
 function App() {
   const expenses = [
