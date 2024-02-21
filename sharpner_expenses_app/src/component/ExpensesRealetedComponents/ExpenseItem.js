@@ -1,35 +1,25 @@
 import './ExpenseItem.css';
 import ExpenseDate from './ExpenseDate';
 import Card from '../UiRelatedComponent/Card';
-import React from "react";
+import React,{useState} from "react";
 
-export default class ExpenseItem extends React.Component{
-    
-    constructor(){
-        super();
-        this.state={
-            Delete:true
-        }
+export default function ExpenseItem(props){
+
+       const [Delete,changeDelete]=useState(true)
+    let handleDelete=()=>{
+        let val =!Delete;
+       changeDelete(val)
     }
-    handleDelete=()=>{
-       let {Delete}=this.state;
-     Delete=!Delete;
-        this.setState({Delete})
-    }
-
-    render(){
-        if(this.state.Delete){
-
-        
+        if(Delete){
         return( 
             
             <Card className="expense-item">
-                <ExpenseDate date={this.props.date}/>  
+                <ExpenseDate date={props.date}/>  
                 <div className='expense-item__description'>
-                    <h2>{this.props.location}</h2>
-                    <h2>{this.props.tital}</h2>
-                    <div className='expense-item__price'>${this.props.amount}</div>
-                    <button onClick={this.handleDelete}>Dellete Expense</button>
+                    <h2>{props.location}</h2>
+                    <h2>{props.tital}</h2>
+                    <div className='expense-item__price'>${props.amount}</div>
+                    <button onClick={handleDelete}>Dellete Expense</button>
                 </div>
             </Card>
             );
@@ -37,5 +27,4 @@ export default class ExpenseItem extends React.Component{
     else{
         return null;
     }
-}
 }
