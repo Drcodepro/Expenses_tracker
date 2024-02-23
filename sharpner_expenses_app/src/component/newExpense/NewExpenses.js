@@ -2,10 +2,10 @@ import React from "react";
 import ExpenseForm from "./ExpenseForm"
 import './NewExpenses.css';
 
-function NewExpenses(props){
+function NewExpenses(){
 
     return (<div className="new-expense">
-        <ExpenseForm expenses ={props}/>
+        <ExpenseForm/>
     </div>)
 }
 export default NewExpenses;

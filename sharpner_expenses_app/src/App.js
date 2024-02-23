@@ -12,7 +12,7 @@ function App() {
     { tital: "collage fee", date: new Date(2024, 1, 29), amount: 8761,location:"sagar" },
   ];
   return (<div>
-    <NewExpense expenses = {expenses}/>
+    <NewExpense/>
     <Expenses items={expenses} />
   </div>)
 }
