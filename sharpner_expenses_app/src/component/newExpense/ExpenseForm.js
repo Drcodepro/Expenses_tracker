@@ -1,12 +1,12 @@
 import "./ExpenseForm.css";
 import React, { useState } from "react";
 
-function ExpenseForm() {
-  const [enteredTitle, changeTitle] = useState("");
-  const [enteredAmount, changeAmount] = useState("");
-  const [enteredDate, changeDate] = useState("");
+function ExpenseForm(props) {
+  const [enteredTitle, changeTitle] = useState('');
+  const [enteredAmount, changeAmount] = useState('');
+  const [enteredDate, changeDate] = useState('');
 
-
+  
   // ###### multiState in single state ######
 
 //   const [userInput, changeState] = useState({
@@ -31,22 +31,28 @@ function ExpenseForm() {
   };
 
   const DateHandler = (event) => {
-    changeAmount(event.target.value);
-  };
-
-  const AmountHandler = (event) => {
+    
     changeDate(event.target.value);
   };
 
+  const AmountHandler = (event) => {
+    changeAmount(event.target.value);
+  };
+
   const handleSubmit=(event)=>{
-    event.preventDefault();
-    const expenses={
+    event.preventDefault();          
+    const newExpense={
         title:enteredTitle,
         date:new Date(enteredDate),
         amount:enteredAmount
     }
-    console.log(expenses);
-    
+   
+    props.onSaveExpanseData(newExpense);
+
+// to clear a form input fields after when user click on the submit button 
+    changeTitle('');
+    changeDate('');
+    changeAmount('');
   }
 
   return (
@@ -54,7 +60,7 @@ function ExpenseForm() {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={TitleHandler} />
+          <input type="text" value={enteredTitle} onChange={TitleHandler} />
         </div>
         <div className="new-expense__control">
           <label>Date</label>
@@ -63,6 +69,7 @@ function ExpenseForm() {
             min="2024-01-01"
             max="2026-12-31"
             onChange={DateHandler}
+            value={enteredDate}
           />
         </div>
         <div className="new-expense__control">
@@ -72,6 +79,7 @@ function ExpenseForm() {
             min="0.01"
             step="0.01"
             onChange={AmountHandler}
+            value={enteredAmount}
           />
         </div>
       </div>
