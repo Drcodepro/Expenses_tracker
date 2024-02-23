@@ -1,6 +1,8 @@
 
 import Expenses from "./component/ExpensesRealetedComponents/Expenses";
 
+import NewExpense from "./component/newExpense/NewExpenses";
+
 
 function App() {
   const expenses = [
@@ -10,7 +12,7 @@ function App() {
     { tital: "collage fee", date: new Date(2024, 1, 29), amount: 8761,location:"sagar" },
   ];
   return (<div>
-    <h2>Let's get started!</h2>
+    <NewExpense expenses = {expenses}/>
     <Expenses items={expenses} />
   </div>)
 }
