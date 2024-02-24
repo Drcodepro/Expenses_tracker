@@ -43,10 +43,9 @@ function Expenses(props){
       props.items.map((element,indx )=>{
         return <ExpenseItem 
         key={indx}
-        tital={element.tital}
+        title={element.title}
         amount={element.amount}
         date={element.date}
-        location={element.location}
       />
       })
       }

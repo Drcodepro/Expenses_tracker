@@ -14,7 +14,7 @@ export default function ExpenseItem(props) {
       <ExpenseDate date={props.date} />
       <div className="expense-item__description">
         <h2>{props.location}</h2>
-        <h2>{props.tital}</h2>
+        <h2>{props.title}</h2>
         <div className="expense-item__price">${Amount}</div>
         <button onClick={handleExpense}>Change Expense</button>
       </div>

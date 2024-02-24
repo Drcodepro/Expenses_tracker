@@ -1,25 +1,27 @@
 
 import Expenses from "./component/ExpensesRealetedComponents/Expenses";
+import NewExpenses from "./component/newExpense/NewExpenses";
+import React,{useState} from 'react'
 
-import NewExpense from "./component/newExpense/NewExpenses";
-
+let expenses = [
+  { title: "Car insurance", date: new Date(2024, 1, 2), amount: 76382},
+  { title: "bithday party", date: new Date(2024, 1, 7), amount: 376},
+  { title: "Traveling", date: new Date(2024, 1, 15), amount: 10932},
+  { title: "collage fee", date: new Date(2024, 1, 29), amount: 8761}
+];
 
 function App() {
-  const expenses = [
-    { tital: "Car insurance", date: new Date(2024, 1, 2), amount: 76382,location:"bhopal"},
-    { tital: "bithday party", date: new Date(2024, 1, 7), amount: 376 ,location:"new delhi" },
-    { tital: "Traveling", date: new Date(2024, 1, 15), amount: 10932,location:"goa" },
-    { tital: "collage fee", date: new Date(2024, 1, 29), amount: 8761,location:"sagar" },
-  ];
+   const [expense,setExpenses] = useState(expenses);
 
-  const addNewExpense=(newExpanse)=>{
-   expenses.push(newExpanse);
-   console.log(expenses);
-  }
+   const addNewExpense=(newExpanse)=>{
+   setExpenses((prevState)=>{
+    return [newExpanse, ...prevState];
+   });
+  };
 
   return (<div>
-    <NewExpense addNewExpenseData={addNewExpense}/>
-    <Expenses items={expenses} />
+    <NewExpenses addNewExpenseData={addNewExpense}/>
+    <Expenses items={expense} />
   </div>)
 }
 
