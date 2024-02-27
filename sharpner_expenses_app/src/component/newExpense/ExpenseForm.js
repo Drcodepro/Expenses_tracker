@@ -31,7 +31,6 @@ function ExpenseForm(props) {
   };
 
   const DateHandler = (event) => {
-    
     changeDate(event.target.value);
   };
 
@@ -39,14 +38,16 @@ function ExpenseForm(props) {
     changeAmount(event.target.value);
   };
 
+  let key =5;
   const handleSubmit=(event)=>{
     event.preventDefault();          
     const newExpense={
-        title:enteredTitle,
-        date:new Date(enteredDate),
-        amount:enteredAmount
+      id:`e${key}`,
+      title:enteredTitle,
+      date:new Date(enteredDate),
+      amount:enteredAmount
     }
-   
+   key++;
     props.onSaveExpanseData(newExpense);
 
 // to clear a form input fields after when user click on the submit button 
