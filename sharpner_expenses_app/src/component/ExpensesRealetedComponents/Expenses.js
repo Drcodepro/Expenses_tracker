@@ -24,12 +24,15 @@ function Expenses(props) {
 
       {filteredExpenses.length === 0 ? <p>No expense found of year {filteredYear}</p> :
         filteredExpenses.map((element) => {
-          return <ExpenseItem
+          return(<><ExpenseItem
             key={element.id}
             title={element.title}
             amount={element.amount}
             date={element.date}
           />
+          {filteredExpenses.length===1?<p>Only single Expense here. Please add more...</p>:null}
+          </> 
+          )
       })}
     </Card>
   );
