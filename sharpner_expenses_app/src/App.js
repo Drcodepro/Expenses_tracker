@@ -2,12 +2,13 @@
 import Expenses from "./component/ExpensesRealetedComponents/Expenses";
 import NewExpenses from "./component/newExpense/NewExpenses";
 import React,{useState} from 'react'
+import './App.css';
 
 let expenses = [
-  { id:"e1",title: "Car insurance", date: new Date(2024, 1, 2), amount: 76382},
-  { id:"e2",title: "bithday party", date: new Date(2024, 1, 7), amount: 376},
-  { id:"e3",title: "Traveling", date: new Date(2024, 1, 15), amount: 10932},
-  { id:"e4",title: "collage fee", date: new Date(2024, 1, 29), amount: 8761}
+  { id:"e1",title: "Car insurance", date: new Date(2024, 1, 2), amount:82},
+  { id:"e2",title: "bithday party", date: new Date(2024, 2, 7), amount:36},
+  { id:"e3",title: "Traveling", date: new Date(2024, 5, 15), amount:32},
+  { id:"e4",title: "collage fee", date: new Date(2024, 8, 29), amount:61}
 ];
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
   });
   };
 
-  
+
 // changes the state for showing and despearing the add expense form.....
 const handleChangeShow=()=>{
   setShowForm((prevstate)=>{
@@ -33,10 +34,13 @@ const handleChangeShow=()=>{
   });
 }
 
-  return (<div>
+  return (<>
+  <div className="NavBar">Expense Tracker</div>
+  <div>
    <NewExpenses showForm ={showForm} changeShow={handleChangeShow} addNewExpenseData={addNewExpense}/>
     <Expenses items={expense} />
-  </div>)
+  </div>
+  </>)
 }
 
 export default App;

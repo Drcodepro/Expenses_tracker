@@ -4,6 +4,7 @@ import "./Expenses.css"
 import Card from '../UiRelatedComponent/Card';
 import ExpensesFilter from "./ExpenseFilter.js";
 import React, { useState } from 'react';
+import ExpenseBar from "./ExpenseBar.js";
 
 function Expenses(props) {
 
@@ -21,7 +22,9 @@ function Expenses(props) {
 
     <Card className="expenses">
       <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-
+      
+      <ExpenseBar filteredExpenses={filteredExpenses} />
+      
       {filteredExpenses.length === 0 ? <p>No expense found of year {filteredYear}</p> :
         filteredExpenses.map((element) => {
           return(<><ExpenseItem

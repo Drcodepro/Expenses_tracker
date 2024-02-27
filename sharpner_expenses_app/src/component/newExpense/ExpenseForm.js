@@ -35,7 +35,7 @@ function ExpenseForm(props) {
   };
 
   const AmountHandler = (event) => {
-    changeAmount(event.target.value);
+    changeAmount(Number(event.target.value));
   };
 
   let key =5;
