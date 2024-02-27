@@ -8,8 +8,14 @@ function NewExpenses(props){
         props.addNewExpenseData(newExpense);
     }
 
+    // for showing and despearing the add expense form.....
+    const handleShowform=()=>{
+        props.changeShow();
+    }
+
+
     return (<div className="new-expense">
-        <ExpenseForm onSaveExpanseData={addExpenseData}/>
+        {props.showForm?<ExpenseForm onSaveExpanseData={addExpenseData} changeShow={props.changeShow}/> : <button onClick={handleShowform}>add new Expense</button>}
     </div>)
 }
 export default NewExpenses;

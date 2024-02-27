@@ -56,6 +56,14 @@ function ExpenseForm(props) {
     changeAmount('');
   }
 
+  // Reset button work
+  const handleReset=()=>{
+    changeTitle('');
+    changeDate('');
+    changeAmount('');
+    props.changeShow();
+  }
+
   return (
     <form>
       <div className="new-expense__controls">
@@ -85,6 +93,7 @@ function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="reset" onClick={handleReset}>cancel</button>
         <button type="submit" onClick={handleSubmit}>Add Expense</button>
       </div>
     </form>

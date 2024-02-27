@@ -12,15 +12,29 @@ let expenses = [
 
 function App() {
    const [expense,setExpenses] = useState(expenses);
+   const [showForm,setShowForm] = useState(false);
 
    const addNewExpense=(newExpanse)=>{
    setExpenses((prevState)=>{
     return [...prevState,newExpanse];
    });
+
+   // changes the state for showing and despearing the add expense form.....
+   setShowForm((prevstate)=>{
+    return !prevstate;
+  });
   };
 
+  
+// changes the state for showing and despearing the add expense form.....
+const handleChangeShow=()=>{
+  setShowForm((prevstate)=>{
+    return !prevstate;
+  });
+}
+
   return (<div>
-    <NewExpenses addNewExpenseData={addNewExpense}/>
+   <NewExpenses showForm ={showForm} changeShow={handleChangeShow} addNewExpenseData={addNewExpense}/>
     <Expenses items={expense} />
   </div>)
 }
